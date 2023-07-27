@@ -1,38 +1,43 @@
-import React, {Component} from 'react';
-import {MapTo} from '@adobe/aem-react-editable-components';
+import React from "react";
+import { EditableComponent, MapTo } from "@adobe/aem-react-editable-components";
 
-require('./Image.scss');
+require("./Image.scss");
 
 export const ImageEditConfig = {
+  emptyLabel: "Image",
 
-    emptyLabel: 'Image',
-
-    isEmpty: function(props) {
-        return !props || !props.src || props.src.trim().length < 1;
-    }
+  isEmpty: function (props) {
+    return !props || !props.src || props.src.trim().length < 1;
+  },
 };
 
-export default class Image extends Component {
+/**
+ * Export the non-EditableImage object, so this can be embedded in ../Card/Card.js 
+ * and not supersede the Card's edit chrome.
+ */
+export const Image = (props) => {
+  if (ImageEditConfig.isEmpty(props)) {
+    return null;
+  }
 
-    get content() {
-        return <img
-                className="Image-src"
-                src={this.props.src}
-                alt={this.props.alt}
-                title={this.props.title ? this.props.title : this.props.alt} />;
-    }
+  return (
+    <div className="Image">
+      <img
+        className="Image-src"
+        src={props.src}
+        alt={props.alt}
+        title={props.title ? props.title : props.alt}
+      />
+    </div>
+  );
+};
 
-    render() {
-        if(ImageEditConfig.isEmpty(this.props)) {
-            return null;
-        }
+const EditableImage = (props) => {
+  return (
+    <EditableComponent config={ImageEditConfig} {...props}>
+      <Image {...props} />
+    </EditableComponent>
+  );
+};
 
-        return (
-                <div className="Image">
-                    {this.content}
-                </div>
-        );
-    }
-}
-
-MapTo('wknd-spa-react/components/image')(Image, ImageEditConfig);
+export default MapTo("wknd-spa-react/components/image")(EditableImage);
