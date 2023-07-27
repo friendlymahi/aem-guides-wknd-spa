@@ -73,7 +73,6 @@ h1 u, h2 u, h3 u {
  text-align: justify;
  }
 
-
  ul {
      list-style-position: inside;
  }
@@ -91,4 +90,14 @@ h1 u, h2 u, h3 u {
      border: 0 none;
      margin: 0 auto;
      max-width: $max-width;
+ }
+
+ .cmp-text-bg-gray
+ {
+    background-color: lightgray;
+ }
+
+ .cmp-text-bg-skyblue
+ {
+    background-color: skyblue;
  }
