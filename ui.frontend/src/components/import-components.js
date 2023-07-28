@@ -21,3 +21,5 @@ import './Navigation/Navigation';
 import './Header/Header';
 import './Custom/Custom';
 import './Card/Card';
+import './Tabs/Tabs';
+import './Container/Container';

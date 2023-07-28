@@ -10,6 +10,7 @@
     "sync": "aemsync -d -w ../ui.apps/src/main/content"
   },
   "dependencies": {
+    "@adobe/aem-core-components-react-spa": "^1.1.4",
     "@adobe/aem-react-editable-components": "1.1.11",
     "@adobe/aem-spa-component-mapping": "1.1.1",
     "@adobe/aem-spa-page-model-manager": "1.5.0",
@@ -24,13 +25,13 @@
     "react-scripts": "3.4.1",
     "sass": "^1.26.5"
   },
-  "devDependencies": {    
+  "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "aem-clientlib-generator": "^1.5.0",
     "aemsync": "^4.0.0",
-    "cross-env":"7.0.3",
+    "cross-env": "7.0.3",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "sinon": "^7.5.0"
