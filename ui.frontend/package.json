@@ -10,9 +10,9 @@
     "sync": "aemsync -d -w ../ui.apps/src/main/content"
   },
   "dependencies": {
-    "@adobe/aem-react-editable-components": "^2.0.1",
+    "@adobe/aem-react-editable-components": "^2.1.0",
     "@adobe/aem-spa-component-mapping": "^1.1.1",
-    "@adobe/aem-spa-page-model-manager": "^1.4.4",
+    "@adobe/aem-spa-page-model-manager": "^1.5.0",
     "custom-event-polyfill": "^1.0.7",
     "dompurify": "^2.0.7",
     "history": "^4.10.1",
@@ -20,21 +20,20 @@
     "react": "^16.12.0",
     "react-app-polyfill": "^1.0.5",
     "react-dom": "^16.12.0",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.1",
-    "sass": "^1.26.5",
-    "node-sass": "^6.0.1"
+    "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "aem-clientlib-generator": "^1.5.0",
-    "aemsync": "^4.0.0",
+    "aem-clientlib-generator": "^1.8.0",
+    "aemsync": "^5.0.5",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
+    "react-scripts": "5.0.1",
     "sinon": "^7.5.0",
-    "sass-loader": "^10.2.0"
+    "sass": "^1.66.1",
+    "sass-loader": "^13.3.2"
   },
   "proxy": "http://localhost:4502",
   "browserslist": [
