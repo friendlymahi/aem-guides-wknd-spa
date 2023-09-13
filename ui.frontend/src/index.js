@@ -22,27 +22,59 @@ import 'react-app-polyfill/ie9';
 import 'custom-event-polyfill';
 
 import { Constants, ModelManager } from '@adobe/aem-spa-page-model-manager';
-import { createBrowserHistory } from 'history';
 import React from 'react';
 import { render } from 'react-dom';
-import { Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import './components/import-components';
 import './index.scss';
+import { createBrowserHistory } from 'history';
+
+class MainApp extends React.Component
+{
+
+  constructor(props)
+  {
+    super(props);
+
+    const history = createBrowserHistory();
+
+    this.state={history}
+  }
+
+  componentDidMount()
+  {
+    window.addEventListener('cq-pagemodel-route-changed',(e)=>{
+
+      console.debug("route-updated",e);
+      if(e.detail.model && Object.keys(e.detail.model).length>0)
+      {
+        this.setState({...this.state,cqChildren:{...this.props.pageModel[Constants.CHILDREN_PROP],[e.detail.model[Constants.PATH_PROP]]:e.detail.model}})
+      }
+    })
+  }
+
+ render()
+ {
+  const {pageModel} = this.props;
+
+  return <App
+  history={this.state.history}
+  cqChildren={this.state.cqChildren || pageModel[Constants.CHILDREN_PROP]}
+  cqItems={pageModel[Constants.ITEMS_PROP]}
+  cqItemsOrder={pageModel[Constants.ITEMS_ORDER_PROP]}
+  cqPath={pageModel[Constants.PATH_PROP]}
+  locationPathname={window.location.pathname}
+/>
+ }
+
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   ModelManager.initialize().then(pageModel => {
-    const history = createBrowserHistory();
     render(
-      <Router history={history}>
-        <App
-          history={history}
-          cqChildren={pageModel[Constants.CHILDREN_PROP]}
-          cqItems={pageModel[Constants.ITEMS_PROP]}
-          cqItemsOrder={pageModel[Constants.ITEMS_ORDER_PROP]}
-          cqPath={pageModel[Constants.PATH_PROP]}
-          locationPathname={window.location.pathname}
-        />
+      <Router>
+        <MainApp pageModel={pageModel} />
       </Router>,
       document.getElementById('spa-root')
     );
