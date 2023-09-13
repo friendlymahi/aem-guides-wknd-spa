@@ -31,7 +31,7 @@
  font-family: $font-family-serif;
  font-weight: $font-weight-normal;
  margin-top: $line-height-computed;
- margin-bottom: ($line-height-computed / 2);
+ margin-bottom: calc($line-height-computed / 2);
  }
 
  h4, .h4,
@@ -67,12 +67,11 @@ h1 u, h2 u, h3 u {
  // -------------------------
 
  p {
- margin: 0 0 ($line-height-computed / 2);
+ margin: 0 0 calc($line-height-computed / 2);
  font-size: $font-size-base;
  line-height: $line-height-base + 1;
  text-align: justify;
  }
-
 
  ul {
      list-style-position: inside;
@@ -91,4 +90,12 @@ h1 u, h2 u, h3 u {
      border: 0 none;
      margin: 0 auto;
      max-width: $max-width;
+ }
+
+ .cmp-text-bg-gray{
+    background-color: lightgray;
+ }
+
+ .cmp-text-bg-skyblue{
+    background-color: lightblue;
  }
